@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DatingApp.API.Models
 {
-  public class AutoRepository : IAutoRepository
+  public class AuthRepository : IAuthRepository
   {
     private readonly DataContext _context;
-    public AutoRepository(DataContext context)
+    public AuthRepository(DataContext context)
     {
       _context = context;
     }
@@ -21,17 +21,15 @@ namespace DatingApp.API.Models
       }
       if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
       {
-
-      };
+        return null;
+      }
       return user;
     }
-
-    private async Task<bool> VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
+    public bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
     {
-      await _context.Users.;
       using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
       {
-
+        //convert text password to computed hash
         var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
         for (int i = 0; i < computedHash.Length; i++)
         {
@@ -44,11 +42,10 @@ namespace DatingApp.API.Models
         }
 
       }
-
+       
       return true;
     }
-
-    public async Task<User> Register(User user, string password)
+     public async Task<User> Register(User user, string password)
     {
       byte[] passwordHash, passwordSalt;
       CreatePasswordHash(password, out passwordHash, out passwordSalt);
@@ -60,10 +57,11 @@ namespace DatingApp.API.Models
     }
     private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
     {
-      using (var hmac = new System.Security.Cryptography.HMACSHA512)
+      using (var hmac = new System.Security.Cryptography.HMACSHA512())
       {
 
         passwordSalt = hmac.Key;
+        //convert text password to computed password hash
         passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
 
       }

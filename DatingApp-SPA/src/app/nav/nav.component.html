@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+ 
+  <a class="navbar-brand" [routerLink]="['/home']">Dating App</a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/members']">Matches <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/lists']">Lists</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/messages']" tabindex="-1" aria-disabled="true">Messages</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Search
+      </button>
+    </form>
+    <div *ngIf="loggedIn()" class="btn-group ml-2" dropdown>
+      <button type="button" class="btn btn-secondary dropdown-toggle" dropdownToggle>
+        Welcome {{authService.decodedToken?.unique_name | titlecase}}
+      </button>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+        <button class="dropdown-item" type="button">
+          <i class="fa fa-user"></i> Edit Profile
+        </button>
+        <button (click)="logOut()" class="dropdown-item" type="button"><i class="fa fa-sign-out"></i> Logout</button>
+      </div>
+    </div>
+  </div>
+</nav>
+<main role="main"></main>

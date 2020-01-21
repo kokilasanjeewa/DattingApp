@@ -1,0 +1,24 @@
+<section class="jumbotron text-center">
+  <div class="container" *ngIf="!registerMode">
+    <h1 class="jumbotron-heading">Welcome To DatingApp</h1>
+    <p class="lead text-muted">
+      Something short and leading about the collection below—its contents, the
+      creator, etc. Make it short and sweet, but not too short so folks don’t
+      simply skip over it entirely.
+    </p>
+    <p>
+      <a [routerLink]="['/register']"  (click)="registerToggle()" href="#" class="btn btn-info btn-lg my-2 mr-2">Register
+      </a>
+      <a [routerLink]="['/login']" (click)="loginToggle()" class="btn btn-warning btn-lg my-2">
+        Login
+      </a>
+    </p>
+  </div>
+  <div class="container" *ngIf="registerMode">
+    <app-register [valuesFromHome]="values" (cancelRegister)="cancelRegisterMode($event)"></app-register>
+  </div>
+  <div class="container" *ngIf="loginMode">
+    <app-login></app-login>
+  </div>
+
+</section>

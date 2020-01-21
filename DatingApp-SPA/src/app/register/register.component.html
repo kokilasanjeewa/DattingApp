@@ -1,0 +1,64 @@
+<form #RegisterForm="ngForm" class="form-signin" (ngSubmit)="register()">
+  <div class="text-center mb-4">
+    <img
+      class="mb-4"
+      src="/docs/4.2/assets/brand/bootstrap-solid.svg"
+      alt=""
+      width="72"
+      height="72"
+    />
+    <h1 class="h3 mb-3 font-weight-normal">Dating App</h1>
+    <p>
+      Welcome to the dating app,please create an account.
+      <code></code>
+    </p>
+  </div>
+
+  <div class="form-label-group">
+    <input
+      name="username"
+      type="text"
+      id="inputEmail"
+      class="form-control"
+      placeholder="User Name"
+      required
+      autofocus
+      [(ngModel)]="model.username"
+    />
+    <label for="inputEmail">User Name</label>
+  </div>
+
+  <div class="form-label-group">
+    <input
+      name="password"
+      type="password"
+      id="inputPassword"
+      class="form-control"
+      placeholder="Password"
+      required
+      [(ngModel)]="model.password"
+    />
+    <label for="inputPassword">Password</label>
+  </div>
+
+  <div class="checkbox mb-3" style="display: none;">
+    <label>
+      <input type="hidden" value="remember-me" disabled /> Remember me
+    </label>
+  </div>
+  <button
+    class="btn btn-lg btn-primary btn-block"
+    type="submit"
+    [disabled]="!RegisterForm.valid"
+  >
+    Sign in
+  </button>
+  <button
+    (click)="cancel()"
+    class="btn btn-lg btn-danger btn-block"
+    type="reset"
+  >
+    Cancel
+  </button>
+  <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2018</p>
+</form>
