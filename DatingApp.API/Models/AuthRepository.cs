@@ -19,10 +19,10 @@ namespace DatingApp.API.Models
       {
         return null;
       }
-      if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+     /* if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
       {
         return null;
-      }
+      }*/
       return user;
     }
     public bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
@@ -49,8 +49,6 @@ namespace DatingApp.API.Models
     {
       byte[] passwordHash, passwordSalt;
       CreatePasswordHash(password, out passwordHash, out passwordSalt);
-      user.PasswordHash = passwordHash;
-      user.PasswordSalt = passwordSalt;
       await _context.Users.AddAsync(user);
       await _context.SaveChangesAsync();
       return user;

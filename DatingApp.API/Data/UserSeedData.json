@@ -1,0 +1,31 @@
+[
+  {
+    "Id": 1,  
+    "UserName": "kokila.sanjeewa@gmail.com",
+    "city": "Colombo",
+    "Country": "Sri Lanka",
+    "Created": "2020-01-24",
+    "DateOfBirth": "1982-01-08",
+    "Gender": "Male",
+    "Interrests": "Codeing",
+    "Introduction": "Anything is Possible and Nothing is Impossible",
+    "KnownAs": "active",
+    "LastActive": "2020-01-24",
+    "LookingFor": "Don't reinvent the wheel,unless you plan on learning more about wheels",
+    "Photos":[
+      {
+        "Id": 1,
+        "DateAdded": "2020-01-24",
+        "Description": "https://randomuser.me/",
+        "Url": "https://randomuser.me/api/portraits/men/75.jpg",
+        "UserId":  1,
+        "IsMain":  true
+      }
+    ]
+  }
+]
+
+
+
+
+
