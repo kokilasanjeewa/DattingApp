@@ -16,6 +16,7 @@ import { MemberListComponent } from './member-list/member-list.component';
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { appRoutes } from './routes';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { appRoutes } from './routes';
       LoginComponent,
       MemberListComponent,
       ListsComponent,
-      MessagesComponent
+      MessagesComponent,
+      AdminComponent
    ],
    imports: [
       BrowserModule,

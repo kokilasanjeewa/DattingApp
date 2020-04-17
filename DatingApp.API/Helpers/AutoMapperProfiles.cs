@@ -1,5 +1,6 @@
 using System.Linq;
 using AutoMapper;
+using DatingApp.API.Controllers;
 using DatingApp.API.Dtos;
 using DatingApp.API.Models;
 
