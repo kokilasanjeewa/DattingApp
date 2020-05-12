@@ -60,7 +60,7 @@ namespace DatingApp.API
     {
       options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
       options.AddPolicy("ModeratorPhotoRole", policy => policy.RequireRole("Moderator"));
-
+      options.AddPolicy("TeacherPhotoRole", policy => policy.RequireRole("Admin"));
     });
       services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
       services.AddMvc(options =>
