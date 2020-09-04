@@ -17,6 +17,9 @@ using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using GraphQL.Client.Abstractions;
+using GraphQL.Client.Http;
+using GraphQL.Client.Serializer.Newtonsoft;
 
 namespace DatingApp.API
 {
@@ -75,6 +78,8 @@ namespace DatingApp.API
       services.AddAutoMapper(typeof(DatingRepository).Assembly);
       services.AddScoped<IAuthRepository, AuthRepository>();
       services.AddScoped<IDatingRepository, DatingRepository>();
+      services.AddScoped<IGraphQLClient>(s => new GraphQLHttpClient(Configuration["GraphQLURI"],new NewtonsoftJsonSerializer()));
+      services.AddScoped<OwnerConsumer>();
 
     }
 

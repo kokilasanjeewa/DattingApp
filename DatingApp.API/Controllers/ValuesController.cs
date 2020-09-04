@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DatingApp.API.Data;
+using DatingApp.API.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,10 +16,12 @@ namespace DatingApp.API.Controllers
   [ApiController]
   public class ValuesController : ControllerBase
   {
+    private readonly OwnerConsumer _consumer;
     private readonly DataContext _context;
-    public ValuesController(DataContext context)
+    public ValuesController(DataContext context, OwnerConsumer consumer)
     {
       _context = context;
+      _consumer = consumer;
     }
     //GET method https://localhost:5001/api/controllername/
     // GET api/values
@@ -29,6 +32,20 @@ namespace DatingApp.API.Controllers
       //return new string[] { "value0", "value1" };
         return Ok(values);
     }*/
+     [AllowAnonymous]
+     [HttpGet]
+    public async Task<IActionResult> Get()
+    {
+        var owners = await _consumer.GetAllOwners();
+        return Ok(owners);
+    }
+     [AllowAnonymous]
+     [HttpPost]
+    public async Task<IActionResult> Create()
+    {
+        var owners = await _consumer.GetAllOwners();
+        return Ok(owners);
+    }
     [AllowAnonymous]
     [HttpGet]
     public async Task<IActionResult> GetValues()
